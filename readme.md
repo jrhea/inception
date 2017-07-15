@@ -1,6 +1,6 @@
-## Hyperlink Host
+## Inception Host
 
-URL params are used to interface with Hyperlink Host.  
+URL params are used to interface with Inception Host.  
 
 ### API
 
