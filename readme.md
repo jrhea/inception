@@ -18,7 +18,7 @@ Display a hyperlink that hosts a html file.
 
 ***Host editor.html from a hyperlink:***
 
- `http://127.0.0.1:3000/index.html?command=create&target=hyperlink&resource=http://127.0.0.1:3000/editor.html`
+ `https://jrhea.github.io/inception/?command=create&target=hyperlink&resource=https://jrhea.github.io/inception/editor.html`
  
 
 ***Note:*** If you want it to automatically open in a new window, change: 
