@@ -1,10 +1,10 @@
 requirejs.config({
     baseUrl: 'js/lib', 
 	paths: {
-		'pako': 'bower_components/pako/dist/pako.min',
-		'jquery':'bower_components/jquery/dist/jquery.min',
-		'text':'bower_components/text/text',
-		'validate':'bower_components/validate/validate.min'
+		'pako': 'pako.min',
+		'jquery':'jquery.min',
+		'text':'text',
+		'validate':'validate.min'
 	}
     ,
 	config: {
