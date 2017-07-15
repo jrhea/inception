@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- Include Quill stylesheet -->
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<style>
+#editor-container {
+  height: 350px;
+}
+.container {
+  margin-bottom: 10px;
+  text-align: right;
+}
+.container a {
+  font-family: Helvetia, sans-serif;
+}
+.row {
+  margin-top: 15px;
+}
+.btn {
+  margin-left: 0px;
+}
+</style>
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.2.6/quill.js"></script>
+<script src="./js/lib/bower_components/requirejs/require.js"></script>
+</head>
+<body>
+<!-- Create the editor container -->
+<div class="row">
+<div id="editor-container"></div>
+</div>
+<div class="row">
+<button id="btnPublish" class="btn" type="button">
+Publish
+<div id='mylink'></div>
+</button>
+</div>
+<!-- Initialize Quill editor -->
+<script>
+var quill = new Quill('#editor-container', {
+  modules: {
+    toolbar: true
+  },
+  placeholder: 'start typing...',
+  theme: 'snow'  // or 'bubble'
+});
+
+document.getElementById("btnPublish").addEventListener("click", onPublish);
+function onPublish() {
+	var myLink = document.getElementById('mylink');
+	myLink.onclick = function(){
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "./js/main.js"; 
+		document.getElementsByTagName("head")[0].appendChild(script);
+		document.location.hash="document.getElementsByClassName(\"ql-editor\")[0]";
+		return false;
+	}
+	document.getElementById('mylink').click(); 
+}
+
+</script>
+</body>
+</html>
