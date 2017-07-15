@@ -44,7 +44,9 @@ function(pako,jquery,validate) {
 		}
 	}
 	
-	main();
+	if(command || target || resource){
+		main();
+	}
 
 	function main(){
 		if(command === "create"){
