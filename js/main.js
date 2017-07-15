@@ -97,7 +97,7 @@ function(pako,jquery,validate) {
 			document.location=hyperlink;
 		}
 		else if(target === 'hyperlink'){
-			document.body.innerHTML += "<a href= " + hyperlink + ">" + "Your Hyperlink Host" + "</a>";
+			document.body.innerHTML += "<a href= " + hyperlink + ">" + "Inception. it Is possible" + "</a>";
 		}
 	}
 		
