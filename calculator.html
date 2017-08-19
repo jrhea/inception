@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>JD's Calculator</title>
+<style>
+.calc-body {
+    table-layout:fixed;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align:center;
+}
+.screen{
+    height:100;
+    text-align:right;
+    vertical-align: bottom;
+    padding-right:8px;
+    background:#000000;
+    color:#FFFFFF;
+    font-size:50;
+}
+.control{
+    background:#BDBDBD
+}
+.functions{
+    background:#FF8000;
+}
+.numbers{
+    background:#D8D8D8;
+}
+td {
+    width: 50;
+    height:50;
+}
+</style>
+  </head>
+  <body>
+    <table class="calc-body" border= "1">
+        <tr>
+            <td class="screen" colspan="4">0</td>
+        </tr>
+        <tr class="control">
+            <td>C</td><td></td><td></td><td class="functions">/</td>
+        </tr>
+        <tr class="numbers">
+            <td>7</td><td>8</td><td>9</td><td class="functions">x</td>
+        </tr>
+        <tr class="numbers">
+            <td>4</td><td>5</td><td>6</td><td class="functions">-</td>
+        </tr>
+        <tr class="numbers">
+            <td>1</td><td>2</td><td>3</td><td class="functions">+</td>
+        </tr>
+        <tr class="numbers">
+            <td>.</td><td>0</td><td>+/-</td><td class="functions">=</td>
+        </tr>
+    </table>
+  </body>
+</html>
