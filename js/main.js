@@ -76,14 +76,18 @@ function(pako,jquery,validate) {
 				
 			}
 			else{
-				var element = eval(resource);
-				if(element){
-					createHyperlink(element.innerHTML);
+				if(is_srcdoc){
+					var element = eval(resource);
+					if(element){
+						createHyperlink(element.innerHTML);
+					}
+					else{
+						console.log(resource + " is not in the DOM.")
+					}
 				}
 				else{
-					console.log(resource + " is not in the DOM.")
+					createHyperlink(resource);
 				}
-			}
 		}
 		else if(command === "load"){
 			loadHyperlink();
