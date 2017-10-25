@@ -22,16 +22,21 @@ require([
 	'validate'
 ], 
 function(pako,jquery,validate) {
-    "use strict";
-    var command,target,resource;
+	"use strict";
+	var command,target,resource,is_srcdoc;
 	var url = new URL(location);
 	
 	command = url.searchParams.get("command");
 	target = url.searchParams.get("target");
 	resource = url.searchParams.get("resource");
+	is_srcdoc = false;
 
+	if(resource === "html"){
+		resource = getHashPayload(location);
+	}
 	//detect if called from content in iframe's srcdoc
-	if(url.pathname === "srcdoc"){
+	else if(url.pathname === "srcdoc"){
+		is_srcdoc = true;
 		//TODO: make a more sophisticated method for detecting iframe events
 		resource = getHashPayload(location);
 		//event was fired from within iframe
