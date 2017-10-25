@@ -88,6 +88,7 @@ function(pako,jquery,validate) {
 				else{
 					createHyperlink(resource);
 				}
+			}
 		}
 		else if(command === "load"){
 			loadHyperlink();
