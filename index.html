@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Inception Host</title>
-    <script src="./js/lib/require.js"></script>
-	<script src="./js/main.js"></script>
+    <style>
+    #editor-container {
+      height: 350px;
+      border: 1px groove;
+    }
+    .container {
+      margin-bottom: 10px;
+      text-align: right;
+    }
+    .container a {
+      font-family: Helvetia, sans-serif;
+    }
+    .row {
+      margin-top: 15px;
+    }
+    .btn {
+      margin-left: 0px;
+    }
+    </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-light.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.configure({
+        languages: ['javascript','html','css']
+    })
+    </script>
+    <link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+    <script src="./js/lib/pako.min.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
 </head>
 <body>
+<!-- Create the editor container -->
+<div class="row">
+<div id="editor-container"></div>
+</div>
+<div class="row">
+<button id="btnPublish" class="btn" type="button">
+Publish
+<div id='mylink'></div>
+</button>
+</div>
+<script src="./js/main.js"></script>
 </body>
 </html>
