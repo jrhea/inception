@@ -36,7 +36,7 @@ Paste this code into the editor:
 	<summary>Example Code</summary>
 	<p>
 		
-```javascript
+```html
 <html>
 
 <head>
