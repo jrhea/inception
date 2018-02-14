@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <title>JD's Calculator</title>
+    <style>
+    .myCalculator {
+        table-layout:fixed;
+        width:40%;
+        height:80%;
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align:center;
+    }
+    .screen{
+        height:30%;
+        text-align:right;
+        vertical-align: bottom;
+        padding-right:8px;
+        background:#000000;
+        color:#FFFFFF;
+        font-size:50;
+    }
+    .control{
+        background:#BDBDBD;
+        cursor:hand;
+    }
+    .functions{
+        background:#FF8000;
+        cursor:hand;
+    }
+    .numbers{
+        background:#D8D8D8;
+        cursor:hand;
+    }
+    </style>
+  </head>
+  <body>
+    <table class="myCalculator" border= "1">
+        <tr>
+            <td class="screen" colspan="4">0</td>
+        </tr>
+        <tr class="control">
+            <td colspan="3">Clear</td><<td class="functions">/</td>
+        </tr>
+        <tr class="numbers">
+            <td>7</td><td>8</td><td>9</td><td class="functions">*</td>
+        </tr>
+        <tr class="numbers">
+            <td>4</td><td>5</td><td>6</td><td class="functions">-</td>
+        </tr>
+        <tr class="numbers">
+            <td>1</td><td>2</td><td>3</td><td class="functions">+</td>
+        </tr>
+        <tr class="numbers">
+            <td>.</td><td>0</td><td>+/-</td><td class="functions">=</td>
+        </tr>
+    </table>
+    <script>
+        var equation = "";
+        var isOperation = false;
+        function initCalc(){
+          var calc = document.getElementsByClassName("myCalculator")[0];
+          for(var i=0;i<calc.rows.length;i++){
+              for(var j=0;j<calc.rows[i].cells.length;j++){
+                  calc.rows[i].cells[j].onclick = function(){
+                      if(!isNaN(parseInt(this.innerHTML))){
+                        numberClick(parseInt(this.innerHTML));
+                      }
+                      else if(this.innerHTML === "Clear"){
+                        clearScreen();
+                      }
+                      else if(this.innerHTML === "/" || this.innerHTML === "*" || this.innerHTML === "-" || this.innerHTML === "+"){
+                        operation(this.innerHTML);
+                      }
+                      else if(this.innerHTML === "+/-"){
+                        negate();
+                      }
+                      else{
+                        equals();
+                      }
+                  };
+              }
+          }
+        }
+        function numberClick(number){
+          
+          var screen = document.getElementsByClassName("screen")[0];
+          if(screen.innerHTML === "0" || isOperation){
+            screen.innerHTML = number;
+          }
+          else{
+            screen.innerHTML += number.toString();
+          }
+          equation += number.toString();
+          isOperation = false;
+        }
+        function clearScreen(){
+          isOperation = false;
+          var screen = document.getElementsByClassName("screen")[0];
+          screen.innerHTML = 0;
+          equation = "";
+        }
+        function operation(operationType){
+          var screen = document.getElementsByClassName("screen")[0];
+          //if equation ends in /,x,-,+ then replace it with new operation
+          if(isOperation){
+            equation[equation.length-1]=operationType;
+          }
+          else{
+            equation += operationType;
+          }
+          isOperation = true;
+        }
+        function negate(){
+          var screen = document.getElementsByClassName("screen")[0];
+          if(screen.innerHTML !== "0"){
+            var num = eval(screen.innerHTML + "*-1");
+            if(num > 0) {
+              numStr = "+" + num.toString();
+            }
+            else {
+              numStr = num.toString();
+            }
+            equation = equation.substring(0,equation.length-Math.abs(parseInt(screen.innerHTML)).toString().length) +  numStr;
+            screen.innerHTML = num;
+          }
+        }
+        function equals(){
+          var screen = document.getElementsByClassName("screen")[0];
+          //if equation ends in /,x,-,+ then remove it and perform eval
+          if(isOperation){
+            equation[equation.length-1]=operationType;
+          }
+          screen.innerHTML = eval(equation);
+          isOperation = false;
+        }
+        document.onload=initCalc();
+    </script>
+  </body>
+</html>
