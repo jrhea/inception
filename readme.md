@@ -35,6 +35,7 @@ Paste this code into the editor:
 <details>
 	<summary>Example Code</summary>
 	<p>
+		
 ```javascript
 <html>
 
