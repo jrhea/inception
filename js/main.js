@@ -1,10 +1,11 @@
 "use strict";
 var inceptionHost = inceptionHost || {};
 inceptionHost.sub = (function() {
-    var command,target,resource;
+    var command,type,target,resource;
     var url = new URL(location);
     
     command = url.searchParams.get("command");
+    type = url.searchParams.get("type");
     target = url.searchParams.get("target");
     resource = getHashPayload(location);
     
