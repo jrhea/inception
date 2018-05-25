@@ -52,7 +52,8 @@ inceptionHost.sub = (function() {
             createHyperlink(resource);
         }
         else if(command === "load"){
-            loadHyperlink();
+            var deserializedPayload = deserialize(resource)
+            loadHyperlink(deserializedPayload);
         }
     }
     
