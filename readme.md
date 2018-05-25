@@ -22,6 +22,10 @@ The API consists of these url params:
 
  `https://jrhea.github.io/inception/?command=load#<BASE64_STRING>`
 
+***Load a data encoded as a base64 string:***
+
+ `https://jrhea.github.io/inception/?command=load&type=data#<BASE64_STRING>`
+
 ### Example
 
 ***Use Web UI to host new content:***

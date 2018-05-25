@@ -1,10 +1,11 @@
 "use strict";
 var inceptionHost = inceptionHost || {};
 inceptionHost.sub = (function() {
-    var command,target,resource;
+    var command,type,target,resource;
     var url = new URL(location);
     
     command = url.searchParams.get("command");
+    type = url.searchParams.get("type");
     target = url.searchParams.get("target");
     resource = getHashPayload(location);
     
@@ -52,7 +53,8 @@ inceptionHost.sub = (function() {
             createHyperlink(resource);
         }
         else if(command === "load"){
-            loadHyperlink();
+            var deserializedPayload = deserialize(resource);
+            loadHyperlink(deserializedPayload);
         }
     }
     
@@ -73,8 +75,7 @@ inceptionHost.sub = (function() {
         }
     }
         
-    function loadHyperlink(){
-        var deserializedPayload = deserialize(resource);
+    function loadHyperlink(deserializedPayload){
         var iframe = "<iframe id=\"contentFrame\" srcdoc=\"" + deserializedPayload + "\" style='position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;'><p>Your browser does not support iframes.</p></iframe>";
         document.body.innerHTML=iframe;
 
@@ -104,7 +105,12 @@ inceptionHost.sub = (function() {
     }
 
     function deserialize(payload) {
-        return JSON.parse( pako.inflate( atob(payload), { to: 'string' }));
+        if(type=="data"){
+            return pako.inflate( atob(payload), { to: 'string' });
+        }
+        else{
+            return JSON.parse( pako.inflate( atob(payload), { to: 'string' }));
+        }
     }
     
 })();
