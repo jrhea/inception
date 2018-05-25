@@ -73,11 +73,8 @@ inceptionHost.sub = (function() {
         }
     }
         
-    function loadHyperlink(){
-        var deserializedPayload = deserialize(resource);
-        var iframe = "<iframe id=\"contentFrame\" srcdoc=\"" + deserializedPayload + "\" style='position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;'><p>Your browser does not support iframes.</p></iframe>";
-        document.body.innerHTML=iframe;
-
+    function loadHyperlink(deserializedPayload){
+        document.body.innerHTML=deserializedPayload;
     }
 
     function getHashPayload(url) {
@@ -104,7 +101,12 @@ inceptionHost.sub = (function() {
     }
 
     function deserialize(payload) {
-        return JSON.parse( pako.inflate( atob(payload), { to: 'string' }));
+        if(type=="data"){
+            return "<pre style='word-wrap: break-word; white-space: pre-wrap;'>" + pako.inflate( atob(payload), { to: 'string' }) + "</pre>";
+        }
+        else{
+            return JSON.parse( pako.inflate( atob(payload), { to: 'string' }));
+        }
     }
     
 })();
